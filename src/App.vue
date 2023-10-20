@@ -9,7 +9,7 @@ const blogStore = useBlogStore();
 const useuserStore= userStore();
 const fetchBlogs = async()=>{
   try{
-        const res =  await axios.get(`http://localhost:8000/api/v1/post`);
+        const res =  await axios.get(`${import.meta.env.VITE_BASE_URL}/api/v1/post`);
         const data = await res.data;
         // console.log(data);
         blogStore.setBlogs(data.posts);
@@ -21,7 +21,7 @@ const fetchBlogs = async()=>{
 
 const fetchUser = async(token)=>{
   try{
-        const res =  await axios.get(`http://localhost:8000/api/v1/profile`,{
+        const res =  await axios.get(`${import.meta.env.VITE_BASE_URL}/api/v1/profile`,{
           headers:{
             'Authorization':`Bearer ${token}`
           }
